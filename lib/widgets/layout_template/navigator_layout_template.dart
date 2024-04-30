@@ -1,3 +1,4 @@
+import 'package:cognitive_assesment_test_app/views/games/games_screen.dart';
 import 'package:cognitive_assesment_test_app/views/home_screen/home_screen.dart';
 import 'package:cognitive_assesment_test_app/views/stats_screen/stats_screen.dart';
 import 'package:cognitive_assesment_test_app/widgets/layout_template/animated_background_container.dart';
@@ -27,10 +28,13 @@ class _NavigatorLayoutTemplateState extends State<NavigatorLayoutTemplate> {
 
     if (_selectedPageIndex == 1) {
       activePage = const StatsScreen();
-      activePageTitle = 'Available vaccines';
+      activePageTitle = 'Your Statistics';
     } else if (_selectedPageIndex == 0) {
       activePage = const HomeScreen();
-      activePageTitle = 'Your profile';
+      activePageTitle = 'Home';
+    } else if (_selectedPageIndex == 2) {
+      activePage = const GamesScreen();
+      activePageTitle = 'Games';
     }
 
     return Scaffold(
@@ -56,13 +60,17 @@ class _NavigatorLayoutTemplateState extends State<NavigatorLayoutTemplate> {
           selectedItemColor: const Color(0xFF00CB94),
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
+              icon: Icon(Icons.home),
+              label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.vaccines),
-              label: 'Vaccines',
+              icon: Icon(Icons.chat_rounded),
+              label: 'Stats',
             ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.games),
+              label: 'Games',
+            )
           ],
         ),
       ),
