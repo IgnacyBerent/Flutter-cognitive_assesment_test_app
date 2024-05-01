@@ -27,8 +27,8 @@ class LayoutTemplate extends StatelessWidget {
           const AnimatedBackgroundContainer(),
           const BlurCover(),
           CenterView(
-            topPadding: 110,
-            bottomPadding: 30,
+            topPadding: 100,
+            bottomPadding: 20,
             child: child,
           ),
         ],
