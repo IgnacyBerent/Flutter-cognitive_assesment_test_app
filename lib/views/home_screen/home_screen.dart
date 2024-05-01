@@ -1,12 +1,14 @@
 import 'package:cognitive_assesment_test_app/api/auth.dart';
-import 'package:cognitive_assesment_test_app/views/games/games_screen.dart';
-import 'package:cognitive_assesment_test_app/views/stats_screen/stats_screen.dart';
 import 'package:cognitive_assesment_test_app/widgets/buttons/my_icon_button.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+    required this.selectPage,
+  });
 
+  final Function(int) selectPage;
   final butotnsSpacing = const SizedBox(height: 25);
 
   @override
@@ -17,7 +19,7 @@ class HomeScreen extends StatelessWidget {
       await auth.logout();
     }
 
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -29,13 +31,7 @@ class HomeScreen extends StatelessWidget {
             width: 260,
             height: 70,
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const StatsScreen();
-                  },
-                ),
-              );
+              selectPage(0);
             },
           ),
           butotnsSpacing,
@@ -46,13 +42,7 @@ class HomeScreen extends StatelessWidget {
             width: 260,
             height: 70,
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const GamesScreen();
-                  },
-                ),
-              );
+              selectPage(2);
             },
           ),
           butotnsSpacing,
