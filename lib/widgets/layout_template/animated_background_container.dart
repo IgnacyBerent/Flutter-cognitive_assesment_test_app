@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnimatedBackgroundContainer extends StatelessWidget {
-  const AnimatedBackgroundContainer({super.key, required this.child});
-  final Widget child;
+  const AnimatedBackgroundContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +17,6 @@ class AnimatedBackgroundContainer extends StatelessWidget {
             Color.fromARGB(255, 255, 255, 255),
           ],
         ),
-      ),
-      child: CustomPaint(
-        child: child,
       ),
     );
   }

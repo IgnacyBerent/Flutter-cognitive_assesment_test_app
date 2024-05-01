@@ -2,14 +2,14 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class CenteredView extends StatelessWidget {
-  final Widget child;
-  const CenteredView({super.key, required this.child});
+class BlurCover extends StatelessWidget {
+  const BlurCover({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.topCenter,
+      width: double.infinity,
+      height: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.25),
         borderRadius: BorderRadius.circular(10),
@@ -24,7 +24,6 @@ class CenteredView extends StatelessWidget {
       child: ClipRRect(
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          child: child,
         ),
       ),
     );

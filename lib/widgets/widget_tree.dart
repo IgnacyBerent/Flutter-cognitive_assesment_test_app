@@ -53,6 +53,7 @@ class _WidgetTreeState extends State<WidgetTree> {
     return StreamBuilder<bool>(
       stream: tokenController.stream,
       builder: (context, snapshot) {
+        return const NavigatorLayoutTemplate(); // TODO: delete after implementing the jwt logic
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
         } else {

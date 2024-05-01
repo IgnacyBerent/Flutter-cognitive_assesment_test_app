@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Cognitive Assesment Test App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 36, 255, 153),
+          seedColor: const Color.fromARGB(255, 15, 11, 240),
         ),
         useMaterial3: true,
       ),

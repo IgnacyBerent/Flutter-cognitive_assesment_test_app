@@ -1,5 +1,6 @@
 import 'package:cognitive_assesment_test_app/widgets/layout_template/animated_background_container.dart';
-import 'package:cognitive_assesment_test_app/widgets/layout_template/centered_view.dart';
+import 'package:cognitive_assesment_test_app/widgets/layout_template/blur_cover.dart';
+import 'package:cognitive_assesment_test_app/widgets/layout_template/center_view.dart';
 import 'package:cognitive_assesment_test_app/widgets/layout_template/layout_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -21,8 +22,14 @@ class LayoutTemplate extends StatelessWidget {
       appBar: LayoutAppBar(
         title: screenName,
       ),
-      body: AnimatedBackgroundContainer(
-        child: CenteredView(child: child),
+      body: Stack(
+        children: [
+          const AnimatedBackgroundContainer(),
+          const BlurCover(),
+          CenterView(
+            child: child,
+          ),
+        ],
       ),
     );
   }
