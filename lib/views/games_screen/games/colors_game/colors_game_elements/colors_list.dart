@@ -41,3 +41,17 @@ const colorsMap = {
   'WHITE': Colors.white,
   'GREY': Colors.grey,
 };
+
+final Map<Color, String> colorsNamesMap = {
+  Colors.red: 'red',
+  Colors.blue: 'blue',
+  Colors.green: 'green',
+  Colors.yellow: 'yellow',
+  Colors.purple: 'purple',
+  Colors.orange: 'orange',
+  Colors.pink: 'pink',
+  Colors.brown: 'brown',
+  Colors.black: 'black',
+  Colors.white: 'white',
+  Colors.grey: 'grey',
+};

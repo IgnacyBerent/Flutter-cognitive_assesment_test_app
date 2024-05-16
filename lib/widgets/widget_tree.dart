@@ -21,7 +21,7 @@ class _WidgetTreeState extends State<WidgetTree> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(const Duration(seconds: 3), (timer) async {
+    timer = Timer.periodic(const Duration(seconds: 3000), (timer) async {
       bool isTokenExpired = await JwtToken().isTokenExpired();
       if (isTokenExpired) {
         bool isTokenRefreshed = await auth.refreshToken();
