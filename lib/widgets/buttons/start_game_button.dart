@@ -1,8 +1,6 @@
 import 'dart:async';
-
-import 'package:cognitive_assesment_test_app/styles/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:cognitive_assesment_test_app/styles/text_styles.dart';
 
 class StartGameButton extends StatefulWidget {
   final VoidCallback onPressed;

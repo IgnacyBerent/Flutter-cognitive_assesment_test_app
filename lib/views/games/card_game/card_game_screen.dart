@@ -1,10 +1,12 @@
-import 'package:cognitive_assesment_test_app/views/games_screen/games/card_game/card_game_elements/card_object.dart';
-import 'package:cognitive_assesment_test_app/views/games_screen/games/card_game/card_game_elements/card_state.dart';
-import 'package:cognitive_assesment_test_app/views/games_screen/games/card_game/card_game_elements/cards_list.dart';
-import 'package:cognitive_assesment_test_app/views/games_screen/games/card_game/card_game_elements/match_game_card.dart';
-import 'package:cognitive_assesment_test_app/widgets/layout_template/game_layout_template.dart';
-import 'package:flutter/material.dart';
 import 'dart:math';
+
+import 'package:flutter/material.dart';
+
+import 'package:cognitive_assesment_test_app/views/games/card_game/card_game_elements/card_object.dart';
+import 'package:cognitive_assesment_test_app/views/games/card_game/card_game_elements/card_state.dart';
+import 'package:cognitive_assesment_test_app/views/games/card_game/card_game_elements/cards_list.dart';
+import 'package:cognitive_assesment_test_app/views/games/card_game/card_game_elements/match_game_card.dart';
+import 'package:cognitive_assesment_test_app/widgets/layout_template/game_layout_template.dart';
 
 class CardGameScreen extends StatefulWidget {
   const CardGameScreen({super.key});

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:cognitive_assesment_test_app/views/games_screen/games/card_game/card_game_screen.dart';
-import 'package:cognitive_assesment_test_app/views/games_screen/games_screen_elements/start_screen.dart';
+import 'package:cognitive_assesment_test_app/views/games/card_game/card_game_screen.dart';
+import 'package:cognitive_assesment_test_app/widgets/layout_template/start_screen_layout_template.dart';
 
 class CardGameStartScreen extends StatelessWidget {
   const CardGameStartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return StartScreen(
+    return StartScreenLayoutTemplate(
       gameName: "Card",
       gameDescription:
           "In this game, you will be shown a hand of covered cards. You have to remember the position of the cards and match them with their pairs.",

@@ -1,10 +1,10 @@
-import 'package:cognitive_assesment_test_app/views/games_screen/games/colors_game/colors_game_elements/result_card.dart';
-import 'package:cognitive_assesment_test_app/widgets/buttons/my_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cognitive_assesment_test_app/models/game_stats/color_round_stat.dart';
 import 'package:cognitive_assesment_test_app/providers/game_stats_provider.dart';
+import 'package:cognitive_assesment_test_app/views/games/colors_game/colors_game_elements/result_card.dart';
+import 'package:cognitive_assesment_test_app/widgets/buttons/my_text_button.dart';
 import 'package:cognitive_assesment_test_app/widgets/layout_template/layout_template.dart';
 
 class ColorGameResultScreen extends ConsumerWidget {

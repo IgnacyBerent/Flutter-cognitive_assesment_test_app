@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import 'package:cognitive_assesment_test_app/views/games_screen/games/numbers_game/numbers_game_screen.dart';
-import 'package:cognitive_assesment_test_app/views/games_screen/games_screen_elements/start_screen.dart';
+import 'package:cognitive_assesment_test_app/views/games/numbers_game/numbers_game_screen.dart';
+import 'package:cognitive_assesment_test_app/widgets/layout_template/start_screen_layout_template.dart';
 
 class NumbersGameStartScreen extends StatelessWidget {
   const NumbersGameStartScreen({super.key});
@@ -16,7 +16,7 @@ class NumbersGameStartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StartScreen(
+    return StartScreenLayoutTemplate(
       gameName: "Numbers",
       gameDescription:
           "In this game you will hear numbers and you will have to repeat them in the reverse order.",

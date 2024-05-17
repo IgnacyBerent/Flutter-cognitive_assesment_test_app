@@ -4,8 +4,8 @@ import 'package:cognitive_assesment_test_app/styles/text_styles.dart';
 import 'package:cognitive_assesment_test_app/widgets/buttons/start_game_button.dart';
 import 'package:cognitive_assesment_test_app/widgets/layout_template/layout_template.dart';
 
-class StartScreen extends StatelessWidget {
-  const StartScreen({
+class StartScreenLayoutTemplate extends StatelessWidget {
+  const StartScreenLayoutTemplate({
     super.key,
     required this.gameName,
     required this.gameDescription,

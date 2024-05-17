@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'package:cognitive_assesment_test_app/providers/game_stats_provider.dart';
-import 'package:cognitive_assesment_test_app/views/games_screen/games/colors_game/screens/colors_game_screen.dart';
-import 'package:cognitive_assesment_test_app/views/games_screen/games_screen_elements/start_screen.dart';
+import 'package:cognitive_assesment_test_app/views/games/colors_game/screens/colors_game_screen.dart';
+import 'package:cognitive_assesment_test_app/widgets/layout_template/start_screen_layout_template.dart';
 
 class ColorsGameStartScreen extends ConsumerWidget {
   const ColorsGameStartScreen({super.key});
@@ -21,7 +21,7 @@ class ColorsGameStartScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return StartScreen(
+    return StartScreenLayoutTemplate(
       gameName: "Colors",
       gameDescription:
           "In this game, you will be shown a color name and you have to say the color of the text, not the text itself.",

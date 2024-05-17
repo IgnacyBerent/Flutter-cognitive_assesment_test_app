@@ -1,5 +1,5 @@
-import 'package:cognitive_assesment_test_app/views/games_screen/games/card_game/card_game_elements/card_state.dart';
 import 'package:flutter/material.dart';
+import 'package:cognitive_assesment_test_app/views/games/card_game/card_game_elements/card_state.dart';
 
 class MatchGameCard extends StatelessWidget {
   const MatchGameCard({
