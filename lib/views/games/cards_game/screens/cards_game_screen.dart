@@ -5,10 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cognitive_assesment_test_app/models/game_stats/cards_round_stat.dart';
 import 'package:cognitive_assesment_test_app/providers/game_stats_provider.dart';
-import 'package:cognitive_assesment_test_app/views/games/cards_game/card_game_elements/card_object.dart';
-import 'package:cognitive_assesment_test_app/views/games/cards_game/card_game_elements/card_state.dart';
-import 'package:cognitive_assesment_test_app/views/games/cards_game/card_game_elements/cards_list.dart';
-import 'package:cognitive_assesment_test_app/views/games/cards_game/card_game_elements/match_game_card.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/elements/card_object.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/elements/card_state.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/elements/cards_list.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/elements/match_game_card.dart';
 import 'package:cognitive_assesment_test_app/views/games/cards_game/screens/cards_game_results_screen.dart';
 import 'package:cognitive_assesment_test_app/widgets/layout_template/game_layout_template.dart';
 

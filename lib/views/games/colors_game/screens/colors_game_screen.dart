@@ -10,7 +10,7 @@ import 'package:string_similarity/string_similarity.dart';
 
 import 'package:cognitive_assesment_test_app/models/game_stats/color_round_stat.dart';
 import 'package:cognitive_assesment_test_app/providers/game_stats_provider.dart';
-import 'package:cognitive_assesment_test_app/views/games/colors_game/colors_game_elements/colors_list.dart';
+import 'package:cognitive_assesment_test_app/views/games/colors_game/elements/colors_list.dart';
 import 'package:cognitive_assesment_test_app/views/games/colors_game/screens/color_game_results_screen.dart';
 import 'package:cognitive_assesment_test_app/widgets/buttons/mic_button.dart';
 

@@ -1,4 +1,4 @@
-import 'package:cognitive_assesment_test_app/views/games/cards_game/card_game_elements/card_object.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/elements/card_object.dart';
 
 final cardsList = [
   CardObject(name: 'Potato', image: 'assets/cards_game/potato.jpeg'),

@@ -1,4 +1,4 @@
-import 'package:cognitive_assesment_test_app/views/games/cards_game/card_game_elements/card_state.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/elements/card_state.dart';
 
 class CardObject {
   String name;

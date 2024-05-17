@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cognitive_assesment_test_app/api/database.dart';
 import 'package:cognitive_assesment_test_app/models/game_stats/cards_round_stat.dart';
 import 'package:cognitive_assesment_test_app/providers/game_stats_provider.dart';
-import 'package:cognitive_assesment_test_app/views/games/cards_game/card_game_elements/card_game_result_card.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/elements/card_game_result_card.dart';
 import 'package:cognitive_assesment_test_app/views/games/cards_game/screens/cards_game_start_screen.dart';
 import 'package:cognitive_assesment_test_app/widgets/buttons/my_text_button.dart';
 import 'package:cognitive_assesment_test_app/widgets/layout_template/layout_template.dart';
