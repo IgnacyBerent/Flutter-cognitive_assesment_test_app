@@ -1,14 +1,13 @@
-import 'package:cognitive_assesment_test_app/views/games_screen/games/colors_game/colors_game_elements/colors_list.dart';
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import 'package:cognitive_assesment_test_app/providers/game_stats_provider.dart';
 import 'package:cognitive_assesment_test_app/views/games_screen/games/colors_game/screens/colors_game_screen.dart';
 import 'package:cognitive_assesment_test_app/views/games_screen/games_screen_elements/start_screen.dart';
 
-class ColorsGameStartScreen extends StatelessWidget {
+class ColorsGameStartScreen extends ConsumerWidget {
   const ColorsGameStartScreen({super.key});
 
   final int gameLenght = 10;
@@ -21,7 +20,7 @@ class ColorsGameStartScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return StartScreen(
       gameName: "Colors",
       gameDescription:
@@ -46,31 +45,11 @@ class ColorsGameStartScreen extends StatelessWidget {
       onPressed: () async {
         await _requestMicrophonePermission();
         if (!context.mounted) return;
+        ref.read(colorGameStatsProvider.notifier).clear();
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              final random = math.Random();
-              final randomBgColors = <Color>[];
-              final randomColorNames = <String>[];
-              final randomTextColor = <Color>[];
-              final randomTextWeights = <FontWeight>[];
-              for (int i = 0; i < gameLenght; i++) {
-                randomBgColors
-                    .add(colorsList[random.nextInt(colorsList.length)]);
-                randomColorNames.add(
-                    colorsNamesList[random.nextInt(colorsNamesList.length)]);
-                randomTextColor
-                    .add(colorsList[random.nextInt(colorsList.length)]);
-                randomTextWeights.add(FontWeight.values[random.nextInt(9)]);
-              }
-              return ColorsGameScreen(
-                game: 0,
-                randomBgColors: randomBgColors,
-                randomColorNames: randomColorNames,
-                randomTextColor: randomTextColor,
-                randomTextWeights: randomTextWeights,
-                anwsers: const [],
-              );
+              return const ColorsGameScreen();
             },
           ),
         );

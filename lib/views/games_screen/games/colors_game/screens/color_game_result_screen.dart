@@ -1,42 +1,47 @@
-import 'package:cognitive_assesment_test_app/widgets/layout_template/layout_template.dart';
+import 'package:cognitive_assesment_test_app/views/games_screen/games/colors_game/colors_game_elements/result_card.dart';
+import 'package:cognitive_assesment_test_app/widgets/buttons/my_text_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ColorGameResultScreen extends StatelessWidget {
-  const ColorGameResultScreen({
-    super.key,
-    required this.results,
-  });
+import 'package:cognitive_assesment_test_app/models/game_stats/color_round_stat.dart';
+import 'package:cognitive_assesment_test_app/providers/game_stats_provider.dart';
+import 'package:cognitive_assesment_test_app/widgets/layout_template/layout_template.dart';
 
-  final Map<String, String> results;
+class ColorGameResultScreen extends ConsumerWidget {
+  const ColorGameResultScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final gameStats = ref.watch(colorGameStatsProvider);
+
+    // casting the gameStats to ColorRoundStat
+    List<ColorRoundStat> results = [];
+    for (var stat in gameStats) {
+      if (stat is ColorRoundStat) {
+        results.add(stat);
+      }
+    }
+
     return LayoutTemplate(
       screenName: "Color Game Results!",
       child: Column(
         children: [
-          const SizedBox(height: 20),
-          const Text(
-            "Your Results:",
-          ),
-          const SizedBox(height: 20),
           Expanded(
             child: ListView.builder(
               itemCount: results.length,
               itemBuilder: (context, index) {
-                final color = results.keys.elementAt(index);
-                final answer = results[color];
-                return ListTile(
-                  title: Text(
-                    color,
-                  ),
-                  subtitle: Text(
-                    answer!,
-                  ),
+                return ResultCard(
+                  roundStat: results[index],
+                  index: index,
                 );
               },
             ),
           ),
+          const SizedBox(height: 30),
+          MyTextButton(
+            buttonText: "SUBMIT",
+            onPressed: () {},
+          )
         ],
       ),
     );

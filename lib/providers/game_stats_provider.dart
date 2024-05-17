@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class GameStatsNotifier extends StateNotifier<List<GameStat>> {
   GameStatsNotifier() : super([]);
 
-  void add(GameStat colorRoundStat) {
+  void addRound(GameStat colorRoundStat) {
     state = [...state, colorRoundStat];
   }
 

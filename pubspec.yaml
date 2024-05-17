@@ -40,9 +40,10 @@ dependencies:
   flutter_secure_storage: ^4.2.1
   jaguar_jwt: ^3.0.0
   permission_handler: ^11.3.1
-  flutter_speech: ^2.0.0
+  speech_to_text: ^6.6.1
   flutter_tts: ^4.0.2
   flutter_riverpod: ^2.5.1
+  string_similarity: ^2.0.0
 
 dev_dependencies:
   flutter_test:

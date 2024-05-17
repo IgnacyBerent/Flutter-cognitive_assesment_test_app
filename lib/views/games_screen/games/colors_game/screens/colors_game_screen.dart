@@ -2,87 +2,133 @@ import 'dart:developer';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_speech/flutter_speech.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:speech_to_text/speech_to_text.dart';
+import 'package:string_similarity/string_similarity.dart';
 
+import 'package:cognitive_assesment_test_app/models/game_stats/color_round_stat.dart';
+import 'package:cognitive_assesment_test_app/providers/game_stats_provider.dart';
+import 'package:cognitive_assesment_test_app/views/games_screen/games/colors_game/colors_game_elements/colors_list.dart';
 import 'package:cognitive_assesment_test_app/views/games_screen/games/colors_game/screens/color_game_result_screen.dart';
+import 'package:cognitive_assesment_test_app/widgets/buttons/mic_button.dart';
 
-class ColorsGameScreen extends StatefulWidget {
+class ColorsGameScreen extends ConsumerStatefulWidget {
   const ColorsGameScreen({
     super.key,
-    required this.game,
-    required this.randomBgColors,
-    required this.randomColorNames,
-    required this.randomTextColor,
-    required this.randomTextWeights,
-    required this.anwsers,
   });
 
-  final int game;
-  final List<Color> randomBgColors;
-  final List<String> randomColorNames;
-  final List<Color> randomTextColor;
-  final List<FontWeight> randomTextWeights;
-  final List<String> anwsers;
-
   @override
-  State<ColorsGameScreen> createState() => _ColorsGameScreenState();
+  ConsumerState<ColorsGameScreen> createState() => _ColorsGameScreenState();
 }
 
-class _ColorsGameScreenState extends State<ColorsGameScreen> {
+class _ColorsGameScreenState extends ConsumerState<ColorsGameScreen> {
+  final gameLenght = 5;
   final random = math.Random();
-  final _speech = SpeechRecognition();
+  final SpeechToText _speechToText = SpeechToText();
+  bool _speechEnabled = false;
+  bool _isListening = false;
+  final randomBgColors = <Color>[];
+  final randomColorNames = <String>[];
+  final randomTextColor = <Color>[];
+  final randomTextWeights = <FontWeight>[];
+  int currentGame = 0;
+  final Stopwatch _stopwatch = Stopwatch();
 
   @override
   void initState() {
+    _initColors();
     super.initState();
-    initSpeechRecognition();
+    _initSpeech();
   }
 
-  void initSpeechRecognition() {
-    _speech.setRecognitionStartedHandler(() {
-      _speech.listen().then((result) => log('$result'));
+  void _initColors() {
+    for (int i = 0; i < gameLenght; i++) {
+      randomBgColors.add(colorsList[random.nextInt(colorsList.length)]);
+      randomColorNames
+          .add(colorsNamesList[random.nextInt(colorsNamesList.length)]);
+      randomTextColor.add(colorsList[random.nextInt(colorsList.length)]);
+      randomTextWeights.add(FontWeight.values[random.nextInt(9)]);
+    }
+  }
+
+  void _initSpeech() async {
+    _speechEnabled = await _speechToText.initialize();
+    log('Speech enabled: $_speechEnabled');
+    setState(() {});
+  }
+
+  void _startListening() async {
+    setState(() {
+      _isListening = true;
     });
-    _speech.setRecognitionResultHandler((String speech) {
-      if (widget.randomColorNames.contains(speech.toUpperCase())) {
-        final newGame = widget.game + 1;
-        if (newGame < 5) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ColorsGameScreen(
-                  game: newGame,
-                  randomBgColors: widget.randomBgColors,
-                  randomColorNames: widget.randomColorNames,
-                  randomTextColor: widget.randomTextColor,
-                  randomTextWeights: widget.randomTextWeights,
-                  anwsers: [...widget.anwsers, speech.toUpperCase()]),
-            ),
-          ).then((_) => initSpeechRecognition());
-        } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ColorGameResultScreen(
-                  results:
-                      widget.randomColorNames.asMap().map((index, colorName) {
-                return MapEntry(colorName, widget.anwsers[index]);
-              })),
-            ),
-          );
-        }
+    if (!_stopwatch.isRunning) {
+      _stopwatch.start();
+    }
+    await _speechToText.listen(onResult: _onSpeechResult);
+    setState(() {});
+  }
+
+  void _stopListening() async {
+    await _speechToText.stop();
+    setState(() {
+      _isListening = false;
+    });
+    setState(() {});
+  }
+
+  void _onSpeechResult(SpeechRecognitionResult result) {
+    log('Speech to text: ${result.recognizedWords}');
+    String recognisedWord = _checkWord(result.recognizedWords);
+    log('Recognition: $recognisedWord');
+    if (colorsNamesList.contains(recognisedWord)) {
+      _saveRound(recognisedWord);
+      if (currentGame >= gameLenght - 1) {
+        _stopListening();
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) {
+              return const ColorGameResultScreen();
+            },
+          ),
+        );
       } else {
-        initSpeechRecognition();
+        setState(() {
+          currentGame++;
+        });
+        _stopListening();
       }
-    });
-    _speech.activate('en_US').then((res) {
-      if (res) {
-        _speech.listen();
+    }
+  }
+
+  void _saveRound(String userAnwser) {
+    _stopwatch.stop();
+    final ColorRoundStat roundStat = ColorRoundStat(
+      correctAnwser: randomColorNames[currentGame],
+      userAnwser: userAnwser,
+      time: _stopwatch.elapsedMilliseconds,
+    );
+    ref.read(colorGameStatsProvider.notifier).addRound(roundStat);
+    _stopwatch.reset();
+  }
+
+  String _checkWord(String word) {
+    String mostSimilarWord = '';
+    double threshold = 0.3;
+    for (String colorName in colorsNamesList) {
+      double similarity = StringSimilarity.compareTwoStrings(
+        word.toUpperCase(),
+        colorName,
+      );
+
+      if (similarity >= threshold) {
+        threshold = similarity;
+        mostSimilarWord = colorName;
       }
-    });
-    _speech.setErrorHandler(() {
-      initSpeechRecognition();
-    });
+    }
+
+    return threshold >= 0.30 ? mostSimilarWord : '';
   }
 
   @override
@@ -91,16 +137,28 @@ class _ColorsGameScreenState extends State<ColorsGameScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: widget.randomBgColors[widget.game],
+        color: randomBgColors[currentGame],
         child: Stack(
           children: [
             Center(
               child: Text(
-                widget.randomColorNames[widget.game],
+                _isListening ? randomColorNames[currentGame] : '',
                 style: GoogleFonts.roboto(
                   fontSize: 50,
-                  color: widget.randomTextColor[widget.game],
-                  fontWeight: widget.randomTextWeights[widget.game],
+                  color: randomTextColor[currentGame],
+                  fontWeight: randomTextWeights[currentGame],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 60.0),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: MicButton(
+                  onPressed: () {
+                    _isListening ? _stopListening() : _startListening();
+                  },
+                  isOn: _isListening,
                 ),
               ),
             ),
