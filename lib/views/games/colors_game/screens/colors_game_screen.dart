@@ -109,7 +109,7 @@ class _ColorsGameScreenState extends ConsumerState<ColorsGameScreen> {
       userAnwser: userAnwser,
       time: _stopwatch.elapsedMilliseconds,
     );
-    ref.read(colorGameStatsProvider.notifier).addRound(roundStat);
+    ref.read(gameStatsProvider.notifier).addRound(roundStat);
     _stopwatch.reset();
   }
 

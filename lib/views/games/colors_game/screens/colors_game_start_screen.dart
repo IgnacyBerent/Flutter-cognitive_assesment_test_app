@@ -45,7 +45,7 @@ class ColorsGameStartScreen extends ConsumerWidget {
       onPressed: () async {
         await _requestMicrophonePermission();
         if (!context.mounted) return;
-        ref.read(colorGameStatsProvider.notifier).clear();
+        ref.read(gameStatsProvider.notifier).clear();
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {

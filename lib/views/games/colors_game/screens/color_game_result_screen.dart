@@ -12,7 +12,7 @@ class ColorGameResultScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final gameStats = ref.watch(colorGameStatsProvider);
+    final gameStats = ref.watch(gameStatsProvider);
 
     // casting the gameStats to ColorRoundStat
     List<ColorRoundStat> results = [];

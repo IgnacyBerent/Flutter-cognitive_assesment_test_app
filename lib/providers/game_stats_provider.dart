@@ -13,7 +13,7 @@ class GameStatsNotifier extends StateNotifier<List<GameStat>> {
   }
 }
 
-final colorGameStatsProvider =
+final gameStatsProvider =
     StateNotifierProvider<GameStatsNotifier, List<GameStat>>(
   (ref) => GameStatsNotifier(),
 );
