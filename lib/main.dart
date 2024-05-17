@@ -1,15 +1,9 @@
-import 'package:cognitive_assesment_test_app/api/auth.dart';
 import 'package:cognitive_assesment_test_app/widgets/widget_tree.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => Authenticate(),
-      child: const MyApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

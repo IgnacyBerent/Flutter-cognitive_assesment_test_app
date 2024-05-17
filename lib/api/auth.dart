@@ -1,12 +1,13 @@
+import 'dart:convert';
 import 'dart:developer';
 
-import 'package:cognitive_assesment_test_app/api/jwt.dart';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-class Authenticate extends ChangeNotifier {
+import 'package:cognitive_assesment_test_app/api/jwt.dart';
+
+class Authenticate {
   final String baseUrl = '';
   final JwtToken jwt = JwtToken();
 
