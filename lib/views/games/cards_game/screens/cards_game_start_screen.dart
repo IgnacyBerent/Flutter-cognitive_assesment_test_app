@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cognitive_assesment_test_app/providers/game_stats_provider.dart';
-import 'package:cognitive_assesment_test_app/views/games/card_game/screens/card_game_screen.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/screens/cards_game_screen.dart';
 import 'package:cognitive_assesment_test_app/widgets/layout_template/start_screen_layout_template.dart';
 
-class CardGameStartScreen extends ConsumerWidget {
-  const CardGameStartScreen({super.key});
+class CardsGameStartScreen extends ConsumerWidget {
+  const CardsGameStartScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,7 +39,7 @@ class CardGameStartScreen extends ConsumerWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return const CardGameScreen(
+              return const CardsGameScreen(
                 numberOfRounds: numberOfRounds,
               );
             },

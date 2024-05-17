@@ -26,7 +26,7 @@ class NumbersGameResultsScreen extends ConsumerWidget {
     }
 
     return LayoutTemplate(
-      screenName: "Color Game Results!",
+      screenName: "Numbers Game Results!",
       child: Column(
         children: [
           Expanded(

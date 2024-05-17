@@ -5,23 +5,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cognitive_assesment_test_app/models/game_stats/cards_round_stat.dart';
 import 'package:cognitive_assesment_test_app/providers/game_stats_provider.dart';
-import 'package:cognitive_assesment_test_app/views/games/card_game/card_game_elements/card_object.dart';
-import 'package:cognitive_assesment_test_app/views/games/card_game/card_game_elements/card_state.dart';
-import 'package:cognitive_assesment_test_app/views/games/card_game/card_game_elements/cards_list.dart';
-import 'package:cognitive_assesment_test_app/views/games/card_game/card_game_elements/match_game_card.dart';
-import 'package:cognitive_assesment_test_app/views/games/card_game/screens/card_game_results_screen.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/card_game_elements/card_object.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/card_game_elements/card_state.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/card_game_elements/cards_list.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/card_game_elements/match_game_card.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/screens/cards_game_results_screen.dart';
 import 'package:cognitive_assesment_test_app/widgets/layout_template/game_layout_template.dart';
 
-class CardGameScreen extends ConsumerStatefulWidget {
-  const CardGameScreen({super.key, required this.numberOfRounds});
+class CardsGameScreen extends ConsumerStatefulWidget {
+  const CardsGameScreen({super.key, required this.numberOfRounds});
 
   final int numberOfRounds;
 
   @override
-  ConsumerState<CardGameScreen> createState() => _CardGameScreenState();
+  ConsumerState<CardsGameScreen> createState() => _CardGameScreenState();
 }
 
-class _CardGameScreenState extends ConsumerState<CardGameScreen> {
+class _CardGameScreenState extends ConsumerState<CardsGameScreen> {
   final Stopwatch _stopwatch = Stopwatch();
   List<CardObject> cards = [];
   List<CardObject> tappedCards = [];
@@ -89,7 +89,7 @@ class _CardGameScreenState extends ConsumerState<CardGameScreen> {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) {
-              return CardGameScreen(
+              return CardsGameScreen(
                 numberOfRounds: widget.numberOfRounds,
               );
             },
@@ -99,7 +99,7 @@ class _CardGameScreenState extends ConsumerState<CardGameScreen> {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) {
-              return const CardGameResultsScreen();
+              return const CardsGameResultsScreen();
             },
           ),
         );

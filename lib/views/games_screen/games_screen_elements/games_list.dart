@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:cognitive_assesment_test_app/views/games/card_game/screens/card_game_start_screen.dart';
+import 'package:cognitive_assesment_test_app/views/games/cards_game/screens/cards_game_start_screen.dart';
 import 'package:cognitive_assesment_test_app/views/games/colors_game/screens/colors_game_start_screen.dart';
 import 'package:cognitive_assesment_test_app/views/games/numbers_game/screens/numbers_game_start_screen.dart';
 import 'package:cognitive_assesment_test_app/views/games_screen/games_screen_elements/game_object.dart';
@@ -13,7 +13,7 @@ final gamesList = [
     imagePath: "assets/images/numbers_game.png",
     gameOnTap: (context) => Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => const CardGameStartScreen(),
+        builder: (context) => const CardsGameStartScreen(),
       ),
     ),
   ),
