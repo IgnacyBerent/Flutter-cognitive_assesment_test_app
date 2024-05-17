@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:cognitive_assesment_test_app/styles/text_styles.dart';
 
 class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
   const LayoutAppBar({
@@ -15,11 +15,7 @@ class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       title: Text(
         title,
-        style: GoogleFonts.lato(
-          fontSize: 22,
-          fontWeight: FontWeight.w900,
-          color: const Color.fromARGB(255, 15, 11, 240),
-        ),
+        style: appBarTextStyle,
       ),
       centerTitle: true,
     );

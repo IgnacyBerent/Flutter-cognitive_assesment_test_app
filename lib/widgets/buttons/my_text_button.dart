@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:cognitive_assesment_test_app/styles/text_styles.dart';
 
 class MyTextButton extends StatelessWidget {
   final String buttonText;
@@ -24,9 +24,7 @@ class MyTextButton extends StatelessWidget {
             ? const CircularProgressIndicator()
             : Text(
                 buttonText,
-                style: GoogleFonts.lato(
-                  fontSize: 16,
-                ),
+                style: buttonTextStyle,
               ),
       ),
     );

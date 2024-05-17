@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:cognitive_assesment_test_app/styles/text_styles.dart';
 
 class MyIconButton extends StatelessWidget {
   final String buttonText;
@@ -37,9 +37,7 @@ class MyIconButton extends StatelessWidget {
                   const SizedBox(width: 10),
                   Text(
                     buttonText,
-                    style: GoogleFonts.lato(
-                      fontSize: 16,
-                    ),
+                    style: buttonTextStyle,
                   ),
                   const SizedBox(width: 10),
                   placement == 'right' ? icon : const SizedBox(),

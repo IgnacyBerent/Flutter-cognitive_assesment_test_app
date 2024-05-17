@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cognitive_assesment_test_app/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -53,20 +54,14 @@ class _StartGameButtonState extends State<StartGameButton> {
                   const CircularProgressIndicator(),
                   Text(
                     "$countdown",
-                    style: GoogleFonts.lato(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w900,
-                    ),
+                    style: countdownTextStyle,
                   ),
                 ],
               )
             : Text(
-                "START\n GAME",
+                "START\nGAME",
                 textAlign: TextAlign.center,
-                style: GoogleFonts.lato(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w900,
-                ),
+                style: buttonTextStyle,
               ),
       ),
     );
