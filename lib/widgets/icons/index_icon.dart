@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:cognitive_assesment_test_app/styles/text_styles.dart';
 
 class IndexIcon extends StatelessWidget {
-  const IndexIcon({super.key, required this.index, required this.correct});
+  const IndexIcon({super.key, required this.index, required this.color});
 
   final int index;
-  final bool correct;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +15,7 @@ class IndexIcon extends StatelessWidget {
         width: 50,
         height: 50,
         decoration: BoxDecoration(
-          color: correct
-              ? const Color.fromARGB(255, 14, 116, 17)
-              : const Color.fromARGB(255, 194, 0, 65),
+          color: color,
           borderRadius: BorderRadius.circular(9999),
         ),
         child: Center(

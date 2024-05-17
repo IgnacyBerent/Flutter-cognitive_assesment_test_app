@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-
-import 'package:cognitive_assesment_test_app/models/game_stats/color_round_stat.dart';
-import 'package:cognitive_assesment_test_app/styles/text_styles.dart';
 import 'package:cognitive_assesment_test_app/widgets/icons/index_icon.dart';
 
 class ResultCard extends StatelessWidget {
-  const ResultCard({super.key, required this.roundStat, required this.index});
+  const ResultCard({
+    super.key,
+    required this.index,
+    required this.indexIconColor,
+    required this.resultTextFields,
+  });
 
-  final ColorRoundStat roundStat;
   final int index;
+  final Color indexIconColor;
+  final List<Widget> resultTextFields;
 
   @override
   Widget build(BuildContext context) {
-    final correct = roundStat.correctAnwser == roundStat.userAnwser;
     return Container(
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(10),
@@ -30,26 +32,16 @@ class ResultCard extends StatelessWidget {
       child: Expanded(
         child: Row(
           children: [
-            IndexIcon(index: index, correct: correct),
+            IndexIcon(
+              index: index,
+              color: indexIconColor,
+            ),
             const SizedBox(width: 20),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Correct: ${roundStat.correctAnwser}',
-                    style: resultsTextStyle,
-                  ),
-                  Text(
-                    'Anwser: ${roundStat.userAnwser}',
-                    style: resultsTextStyle,
-                  ),
-                  Text(
-                    'Time: ${roundStat.time.toString()}ms',
-                    style: resultsTextStyle,
-                  ),
-                ],
+                children: resultTextFields,
               ),
             ),
           ],

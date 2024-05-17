@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cognitive_assesment_test_app/views/games/card_game/card_game_screen.dart';
+import 'package:cognitive_assesment_test_app/providers/game_stats_provider.dart';
+import 'package:cognitive_assesment_test_app/views/games/card_game/screens/card_game_screen.dart';
 import 'package:cognitive_assesment_test_app/widgets/layout_template/start_screen_layout_template.dart';
 
-class CardGameStartScreen extends StatelessWidget {
+class CardGameStartScreen extends ConsumerWidget {
   const CardGameStartScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    const numberOfRounds = 3;
+
     return StartScreenLayoutTemplate(
       gameName: "Card",
       gameDescription:
@@ -28,13 +32,16 @@ class CardGameStartScreen extends StatelessWidget {
         child: Image.asset("assets/images/card_game_example.png"),
       ),
       roundsDescription:
-          "In each round you have 12 pictures to match and the game consists of 3 games.\n Good luck!",
+          "In each round you have 12 pictures to match and the game consists of $numberOfRounds rounds.\n Good luck!",
       onPressed: () {
         if (!context.mounted) return;
+        ref.read(gameStatsProvider.notifier).clear();
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return const CardGameScreen();
+              return const CardGameScreen(
+                numberOfRounds: numberOfRounds,
+              );
             },
           ),
         );
