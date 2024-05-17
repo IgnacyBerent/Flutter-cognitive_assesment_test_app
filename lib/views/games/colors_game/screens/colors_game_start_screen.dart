@@ -10,8 +10,6 @@ import 'package:cognitive_assesment_test_app/widgets/layout_template/start_scree
 class ColorsGameStartScreen extends ConsumerWidget {
   const ColorsGameStartScreen({super.key});
 
-  final int gameLenght = 10;
-
   Future<void> _requestMicrophonePermission() async {
     var status = await Permission.microphone.status;
     if (!status.isGranted) {
@@ -21,6 +19,8 @@ class ColorsGameStartScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    const numberOfRounds = 3;
+
     return StartScreenLayoutTemplate(
       gameName: "Colors",
       gameDescription:
@@ -41,7 +41,8 @@ class ColorsGameStartScreen extends ConsumerWidget {
         ),
       ),
       imageDescription: "In this case, the answer is red.",
-      roundsDescription: "The game consists of 10 questions.\n Good luck!",
+      roundsDescription:
+          "The game consists of $numberOfRounds questions.\nGood luck!",
       onPressed: () async {
         await _requestMicrophonePermission();
         if (!context.mounted) return;
@@ -49,7 +50,9 @@ class ColorsGameStartScreen extends ConsumerWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return const ColorsGameScreen();
+              return const ColorsGameScreen(
+                numberOfRounds: numberOfRounds,
+              );
             },
           ),
         );

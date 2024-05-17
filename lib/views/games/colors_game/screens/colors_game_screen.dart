@@ -17,14 +17,16 @@ import 'package:cognitive_assesment_test_app/widgets/buttons/mic_button.dart';
 class ColorsGameScreen extends ConsumerStatefulWidget {
   const ColorsGameScreen({
     super.key,
+    required this.numberOfRounds,
   });
+
+  final int numberOfRounds;
 
   @override
   ConsumerState<ColorsGameScreen> createState() => _ColorsGameScreenState();
 }
 
 class _ColorsGameScreenState extends ConsumerState<ColorsGameScreen> {
-  final gameLenght = 5;
   final random = math.Random();
   final SpeechToText _speechToText = SpeechToText();
   bool _speechEnabled = false;
@@ -44,7 +46,7 @@ class _ColorsGameScreenState extends ConsumerState<ColorsGameScreen> {
   }
 
   void _initColors() {
-    for (int i = 0; i < gameLenght; i++) {
+    for (int i = 0; i < widget.numberOfRounds; i++) {
       randomBgColors.add(colorsList[random.nextInt(colorsList.length)]);
       randomColorNames
           .add(colorsNamesList[random.nextInt(colorsNamesList.length)]);
@@ -84,7 +86,7 @@ class _ColorsGameScreenState extends ConsumerState<ColorsGameScreen> {
     log('Recognition: $recognisedWord');
     if (colorsNamesList.contains(recognisedWord)) {
       _saveRound(recognisedWord);
-      if (currentGame >= gameLenght - 1) {
+      if (currentGame >= widget.numberOfRounds - 1) {
         _stopListening();
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(

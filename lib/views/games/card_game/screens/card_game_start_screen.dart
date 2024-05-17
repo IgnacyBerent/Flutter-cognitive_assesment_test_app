@@ -32,7 +32,7 @@ class CardGameStartScreen extends ConsumerWidget {
         child: Image.asset("assets/images/card_game_example.png"),
       ),
       roundsDescription:
-          "In each round you have 12 pictures to match and the game consists of $numberOfRounds rounds.\n Good luck!",
+          "In each round you have 12 pictures to match and the game consists of $numberOfRounds rounds.\nGood luck!",
       onPressed: () {
         if (!context.mounted) return;
         ref.read(gameStatsProvider.notifier).clear();
