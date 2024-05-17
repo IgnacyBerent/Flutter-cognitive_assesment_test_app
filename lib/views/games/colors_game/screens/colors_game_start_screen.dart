@@ -19,7 +19,7 @@ class ColorsGameStartScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const numberOfRounds = 3;
+    const numberOfRounds = 10;
 
     return StartScreenLayoutTemplate(
       gameName: "Colors",
