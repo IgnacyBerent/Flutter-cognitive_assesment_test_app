@@ -1,6 +1,6 @@
-import 'package:cognitive_assesment_test_app/models/game_stats/game_stat.dart';
+import 'package:cognitive_assesment_test_app/models/game_stats/round_stat.dart';
 
-class NumbersRoundStat extends GameStat {
+class NumbersRoundStat extends RoundStat {
   List<int> correctAnwser;
   List<int> userAnwser;
   int time;
