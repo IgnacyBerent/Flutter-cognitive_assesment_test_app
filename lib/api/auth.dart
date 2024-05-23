@@ -1,10 +1,7 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:cognitive_assesment_test_app/api/debug_logs.dart';
 import 'package:http/http.dart' as http;
 import 'package:cognitive_assesment_test_app/api/jwt.dart';
-
-import 'dart:developer';
 
 class Authenticate {
   final String baseUrl = 'https://cognitivegamesbackend.onrender.com';
