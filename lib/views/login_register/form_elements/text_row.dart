@@ -33,7 +33,7 @@ class TextRow extends StatelessWidget {
             decoration: const BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  color: Color.fromARGB(255, 204, 231, 248),
+                  color: Color.fromARGB(255, 14, 0, 203),
                   width: 1.5,
                 ),
               ),
@@ -41,7 +41,7 @@ class TextRow extends StatelessWidget {
             child: Text(
               clicText,
               style: GoogleFonts.karla(
-                color: const Color.fromARGB(255, 204, 231, 248),
+                color: const Color.fromARGB(255, 14, 0, 203),
                 fontSize: 12,
                 fontWeight: FontWeight.w900,
               ),

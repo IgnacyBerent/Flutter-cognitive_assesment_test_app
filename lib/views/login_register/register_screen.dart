@@ -98,7 +98,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Text(
                   'REGISTER',
                   style: GoogleFonts.lato(
-                    color: kTextColor,
+                    color: const Color.fromARGB(255, 14, 0, 203),
                     fontSize: 30,
                     fontWeight: FontWeight.w900,
                   ),
