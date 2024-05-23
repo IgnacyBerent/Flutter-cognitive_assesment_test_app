@@ -4,6 +4,8 @@ import 'package:cognitive_assesment_test_app/api/debug_logs.dart';
 import 'package:http/http.dart' as http;
 import 'package:cognitive_assesment_test_app/api/jwt.dart';
 
+import 'dart:developer';
+
 class Authenticate {
   final String baseUrl = 'https://cognitivegamesbackend.onrender.com';
   final JwtToken jwt = JwtToken();
@@ -68,8 +70,7 @@ class Authenticate {
     }
 
     final response = await http.post(
-      Uri.parse('$baseUrl/refresh_token'),
-      body: {'refresh_token': rt},
+      Uri.parse('$baseUrl/refresh_token?refresh_token=$rt'),
     );
 
     if (response.statusCode == 200) {
@@ -77,7 +78,6 @@ class Authenticate {
       await jwt.updateToken(responseBody['access_token']);
       return true;
     } else {
-      log('Failed to refresh token');
       return false;
     }
   }
