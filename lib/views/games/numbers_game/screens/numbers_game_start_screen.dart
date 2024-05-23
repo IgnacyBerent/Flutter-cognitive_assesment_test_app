@@ -35,7 +35,7 @@ class NumbersGameStartScreen extends ConsumerWidget {
         await _requestMicrophonePermission();
         if (!context.mounted) return;
         ref.read(gameStatsProvider.notifier).clear();
-        Navigator.of(context).push(
+        Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) {
               return const NumbersGameScreen(

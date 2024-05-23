@@ -15,7 +15,8 @@ class NumbersGameResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final correct = roundStat.correctAnswer == roundStat.userAnswer;
+    final correct =
+        roundStat.correctAnswer.join(' ') == roundStat.userAnswer.join(' ');
     return ResultCard(
       index: index,
       indexIconColor: correct

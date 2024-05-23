@@ -19,7 +19,7 @@ class ColorsGameStartScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const numberOfRounds = 10;
+    const numberOfRounds = 8;
 
     return StartScreenLayoutTemplate(
       gameName: "Colors",
@@ -47,7 +47,7 @@ class ColorsGameStartScreen extends ConsumerWidget {
         await _requestMicrophonePermission();
         if (!context.mounted) return;
         ref.read(gameStatsProvider.notifier).clear();
-        Navigator.of(context).push(
+        Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) {
               return const ColorsGameScreen(

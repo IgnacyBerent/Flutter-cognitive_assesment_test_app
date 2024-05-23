@@ -20,7 +20,7 @@ class IndexIcon extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            index.toString(),
+            (index + 1).toString(),
             style: numberIndexTextStyle,
           ),
         ),

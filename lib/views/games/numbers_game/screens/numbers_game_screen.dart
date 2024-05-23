@@ -34,7 +34,7 @@ class _NumbersGameScreenState extends ConsumerState<NumbersGameScreen> {
   @override
   void initState() {
     super.initState();
-    flutterTts.setLanguage('en-IN');
+    flutterTts.setLanguage('en-US');
     flutterTts.setSpeechRate(0.2);
     _startRound();
   }
@@ -42,7 +42,7 @@ class _NumbersGameScreenState extends ConsumerState<NumbersGameScreen> {
   void _startRound() {
     numbersController.clear();
     _stopwatch.reset();
-    final n = random.nextInt(5) + 5;
+    const n = 6;
     currentNumbers.clear();
     for (var i = 0; i < n; i++) {
       final number = random.nextInt(10);
