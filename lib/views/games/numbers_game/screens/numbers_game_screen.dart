@@ -35,6 +35,7 @@ class _NumbersGameScreenState extends ConsumerState<NumbersGameScreen> {
   void initState() {
     super.initState();
     flutterTts.setLanguage('en-IN');
+    flutterTts.setSpeechRate(0.2);
     _startRound();
   }
 
