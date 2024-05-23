@@ -33,9 +33,8 @@ class TextRow extends StatelessWidget {
             decoration: const BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  color: Color.fromARGB(
-                      255, 204, 231, 248), // Set the color of the underline
-                  width: 1.5, // Set the thickness of the underline
+                  color: Color.fromARGB(255, 204, 231, 248),
+                  width: 1.5,
                 ),
               ),
             ),

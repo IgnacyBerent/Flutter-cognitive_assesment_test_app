@@ -1,20 +1,16 @@
 import 'dart:convert';
 import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:cognitive_assesment_test_app/api/debug_logs.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:cognitive_assesment_test_app/api/jwt.dart';
 
 class Authenticate {
-  final String baseUrl = '';
+  final String baseUrl = 'https://cognitivegamesbackend.onrender.com';
   final JwtToken jwt = JwtToken();
 
   Future<void> login(String username, String password) async {
-    throw Exception('Not implemented');
     final response = await http.post(
-      Uri.parse('$baseUrl/'),
+      Uri.parse('$baseUrl/login'),
       body: {'username': username, 'password': password},
     );
 
@@ -32,24 +28,30 @@ class Authenticate {
     }
   }
 
-  Future<void> register(String username, String email, String password) async {
-    throw Exception('Not implemented');
+  Future<void> register(String firstName, String lastName, String username,
+      String email, String password) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/'),
-      body: {
+      Uri.parse('$baseUrl/users'),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'first_name': firstName,
+        'last_name': lastName,
         'username': username,
         'email': email,
         'password': password,
-        'password2': password
-      },
+      }),
     );
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       await login(username, password);
     } else {
       if (response.statusCode == 400) {
+        debugLogs(response.statusCode, 201);
         throw Exception('Bad request');
       } else {
+        debugLogs(response.statusCode, 201);
         throw Exception('Failed to register');
       }
     }
@@ -60,30 +62,28 @@ class Authenticate {
   }
 
   Future<bool> refreshToken() async {
-    // TODO: implement sendPushNotificationToken
-    throw Exception('Not implemented');
-    log('Refreshing token');
     String? rt = await jwt.getRefreshToken();
     if (rt == null) {
-      log('No refresh token found');
       return false;
     }
 
     final response = await http.post(
-      Uri.parse('$baseUrl/'),
-      body: {'refresh': rt},
+      Uri.parse('$baseUrl/refresh_token'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: json.encode({'refresh_token': rt}),
     );
 
     if (response.statusCode == 200) {
       final responseBody = json.decode(response.body);
-      await jwt.updateToken(responseBody['access']);
+      await jwt.updateToken(responseBody['access_token']);
       return true;
     } else {
       if (response.statusCode == 400) {
         log('Bad request');
         return false;
       } else {
-        log('Failed to refresh token');
         return false;
       }
     }

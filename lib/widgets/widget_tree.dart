@@ -16,12 +16,12 @@ class WidgetTree extends StatefulWidget {
 class _WidgetTreeState extends State<WidgetTree> {
   StreamController<bool> tokenController = StreamController<bool>();
   Timer? timer;
-  final auth = Authenticate();
+  Authenticate auth = Authenticate();
 
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(const Duration(seconds: 3000), (timer) async {
+    timer = Timer.periodic(const Duration(seconds: 3), (timer) async {
       bool isTokenExpired = await JwtToken().isTokenExpired();
       if (isTokenExpired) {
         bool isTokenRefreshed = await auth.refreshToken();
@@ -53,7 +53,6 @@ class _WidgetTreeState extends State<WidgetTree> {
     return StreamBuilder<bool>(
       stream: tokenController.stream,
       builder: (context, snapshot) {
-        return const NavigatorLayoutTemplate(); // TODO: delete after implementing the jwt logic
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
         } else {

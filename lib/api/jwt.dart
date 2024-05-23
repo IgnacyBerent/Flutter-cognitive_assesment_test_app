@@ -9,11 +9,11 @@ class JwtToken {
   Future<void> saveTokens(Map<String, dynamic> loginResponse) async {
     await storage.write(
       key: 'jwt',
-      value: loginResponse['access'],
+      value: loginResponse['access_token'],
     );
     await storage.write(
       key: 'refresh_jwt',
-      value: loginResponse['refresh'],
+      value: loginResponse['refresh_token'],
     );
   }
 

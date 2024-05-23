@@ -5,7 +5,7 @@ import 'package:cognitive_assesment_test_app/views/login_register/form_elements/
 import 'package:cognitive_assesment_test_app/views/login_register/form_elements/text_row.dart';
 import 'package:cognitive_assesment_test_app/views/login_register/register_screen.dart';
 import 'package:cognitive_assesment_test_app/widgets/buttons/my_icon_button.dart';
-import 'package:cognitive_assesment_test_app/widgets/layout_template/layout_template.dart';
+import 'package:cognitive_assesment_test_app/widgets/layout_template/form_layout_template.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -66,8 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutTemplate(
-      screenName: '',
+    return FormLayoutTemplate(
       child: FormViewContainer(
         child: Form(
           key: _formKey,
@@ -81,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontWeight: FontWeight.w900,
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 120),
               FormContainer(
                 text: 'USERNAME',
                 icon: Icons.person,
@@ -115,6 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 placement: 'right',
                 onPressed: _signIn,
                 isLoading: _isLoading,
+                width: 180,
               ),
               const SizedBox(
                 height: 20,
