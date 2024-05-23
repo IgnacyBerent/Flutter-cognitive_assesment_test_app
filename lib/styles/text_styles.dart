@@ -48,3 +48,29 @@ final countdownTextStyle = GoogleFonts.roboto(
   fontWeight: FontWeight.w900,
   color: const Color.fromARGB(255, 15, 11, 240),
 );
+
+final gameCardTitleTextStyle = GoogleFonts.karla(
+  fontSize: 24,
+  fontWeight: FontWeight.w900,
+  color: const Color(0xfff8f8f8),
+  shadows: <Shadow>[
+    const Shadow(
+      offset: Offset(0, 0),
+      blurRadius: 5.0,
+      color: Color.fromARGB(255, 9, 0, 49),
+    ),
+  ],
+);
+
+final gameCardDescriptionTextStyle = GoogleFonts.karla(
+  fontSize: 16,
+  fontWeight: FontWeight.w600,
+  color: const Color.fromARGB(255, 232, 246, 255),
+  shadows: <Shadow>[
+    const Shadow(
+      offset: Offset(0, 0),
+      blurRadius: 1.0,
+      color: Color.fromARGB(255, 9, 0, 49),
+    ),
+  ],
+);

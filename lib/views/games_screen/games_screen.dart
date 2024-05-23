@@ -3,16 +3,14 @@ import 'package:cognitive_assesment_test_app/views/games_screen/games_screen_ele
 import 'package:flutter/material.dart';
 
 class GamesScreen extends StatelessWidget {
-  GamesScreen({super.key});
-
-  final games = gamesList;
+  const GamesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: games.length,
+      itemCount: gamesList.length,
       itemBuilder: (context, index) {
-        final game = games[index];
+        final game = gamesList[index];
         return GameCard(
           imagePath: game.imagePath,
           cardTitle: game.name,

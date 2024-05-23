@@ -34,7 +34,7 @@ class _NavigatorLayoutTemplateState extends State<NavigatorLayoutTemplate> {
       activePage = HomeScreen(selectPage: (index) => selectPage(index));
       activePageTitle = 'Home';
     } else if (_selectedPageIndex == 2) {
-      activePage = GamesScreen();
+      activePage = const GamesScreen();
       activePageTitle = 'Games';
     }
 

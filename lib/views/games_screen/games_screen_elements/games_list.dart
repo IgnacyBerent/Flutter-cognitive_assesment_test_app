@@ -8,9 +8,9 @@ import 'package:cognitive_assesment_test_app/views/games_screen/games_screen_ele
 final gamesList = [
   GameObject(
     id: 1,
-    name: "Numbers Game",
-    description: "Test your memory with this numbers game",
-    imagePath: "assets/images/numbers_game.png",
+    name: "Cards Game",
+    description: "Test your memory with this cards game",
+    imagePath: "assets/images/cards_game.png",
     gameOnTap: (context) => Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const CardsGameStartScreen(),
