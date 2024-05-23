@@ -15,7 +15,7 @@ class NumbersGameResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final correct = roundStat.correctAnwser == roundStat.userAnwser;
+    final correct = roundStat.correctAnswer == roundStat.userAnswer;
     return ResultCard(
       index: index,
       indexIconColor: correct
@@ -23,11 +23,11 @@ class NumbersGameResultCard extends StatelessWidget {
           : const Color.fromARGB(255, 194, 0, 65),
       resultTextFields: <Widget>[
         Text(
-          'Correct: ${roundStat.correctAnwser.join(' ')}',
+          'Correct: ${roundStat.correctAnswer.join(' ')}',
           style: resultsTextStyle,
         ),
         Text(
-          'Anwser: ${roundStat.userAnwser.join(' ')}',
+          'Anwser: ${roundStat.userAnswer.join(' ')}',
           style: resultsTextStyle,
         ),
         Text(

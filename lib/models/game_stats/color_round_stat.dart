@@ -1,25 +1,21 @@
-import 'dart:convert';
-
 import 'package:cognitive_assesment_test_app/models/game_stats/round_stat.dart';
 
 class ColorRoundStat extends RoundStat {
-  String correctAnwser;
-  String userAnwser;
+  String correctAnswer;
+  String userAnswer;
   int time;
 
   ColorRoundStat({
-    required this.correctAnwser,
-    required this.userAnwser,
+    required this.correctAnswer,
+    required this.userAnswer,
     required this.time,
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'correctAnwser': correctAnwser,
-      'userAnwser': userAnwser,
+    return {
+      'correctAnswer': correctAnswer,
+      'userAnswer': userAnswer,
       'time': time,
     };
   }
-
-  String toJson() => json.encode(toMap());
 }

@@ -60,8 +60,8 @@ class _NumbersGameScreenState extends ConsumerState<NumbersGameScreen> {
     log('User anwser: $userAnwser');
     final correctAnwser = currentNumbers.reversed.toList();
     final roundStat = NumbersRoundStat(
-      correctAnwser: correctAnwser,
-      userAnwser: userAnwser,
+      correctAnswer: correctAnwser,
+      userAnswer: userAnwser,
       time: time,
     );
     ref.read(gameStatsProvider.notifier).addRound(roundStat);

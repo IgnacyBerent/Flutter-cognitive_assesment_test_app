@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 import 'package:cognitive_assesment_test_app/models/game_stats/round_stat.dart';
 
 class CardsRoundStat extends RoundStat {
@@ -18,6 +15,4 @@ class CardsRoundStat extends RoundStat {
       'time': time,
     };
   }
-
-  String toJson() => json.encode(toMap());
 }

@@ -69,10 +69,7 @@ class Authenticate {
 
     final response = await http.post(
       Uri.parse('$baseUrl/refresh_token'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: json.encode({'refresh_token': rt}),
+      body: {'refresh_token': rt},
     );
 
     if (response.statusCode == 200) {
@@ -80,12 +77,8 @@ class Authenticate {
       await jwt.updateToken(responseBody['access_token']);
       return true;
     } else {
-      if (response.statusCode == 400) {
-        log('Bad request');
-        return false;
-      } else {
-        return false;
-      }
+      log('Failed to refresh token');
+      return false;
     }
   }
 }

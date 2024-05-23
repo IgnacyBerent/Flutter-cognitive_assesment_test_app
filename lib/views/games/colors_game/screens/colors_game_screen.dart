@@ -107,8 +107,8 @@ class _ColorsGameScreenState extends ConsumerState<ColorsGameScreen> {
   void _saveRound(String userAnwser) {
     _stopwatch.stop();
     final ColorRoundStat roundStat = ColorRoundStat(
-      correctAnwser: randomColorNames[currentGame],
-      userAnwser: userAnwser,
+      correctAnswer: randomColorNames[currentGame],
+      userAnswer: userAnwser,
       time: _stopwatch.elapsedMilliseconds,
     );
     ref.read(gameStatsProvider.notifier).addRound(roundStat);
