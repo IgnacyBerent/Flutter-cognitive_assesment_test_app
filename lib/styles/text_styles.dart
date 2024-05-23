@@ -74,3 +74,15 @@ final gameCardDescriptionTextStyle = GoogleFonts.karla(
     ),
   ],
 );
+
+final aboveAverageTextStyle = GoogleFonts.karla(
+  fontSize: 16,
+  fontWeight: FontWeight.w700,
+  color: const Color.fromARGB(255, 0, 117, 59),
+);
+
+final belowAverageTextStyle = GoogleFonts.karla(
+  fontSize: 16,
+  fontWeight: FontWeight.w700,
+  color: const Color.fromARGB(255, 182, 0, 61),
+);

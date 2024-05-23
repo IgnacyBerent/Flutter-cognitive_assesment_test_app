@@ -44,6 +44,7 @@ dependencies:
   flutter_tts: ^4.0.2
   flutter_riverpod: ^2.5.1
   string_similarity: ^2.0.0
+  syncfusion_flutter_charts: ^25.2.5
 
 dev_dependencies:
   flutter_test:
