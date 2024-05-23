@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:math' as math;
 
 import 'package:cognitive_assesment_test_app/widgets/buttons/my_text_button.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +9,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cognitive_assesment_test_app/models/game_stats/numbers_round_stat.dart';
 import 'package:cognitive_assesment_test_app/providers/game_stats_provider.dart';
 import 'package:cognitive_assesment_test_app/views/games/numbers_game/screens/numbers_game_results_screen.dart';
+
+import 'dart:developer';
 
 class NumbersGameScreen extends ConsumerStatefulWidget {
   const NumbersGameScreen({
@@ -25,7 +27,7 @@ class NumbersGameScreen extends ConsumerStatefulWidget {
 class _NumbersGameScreenState extends ConsumerState<NumbersGameScreen> {
   final Stopwatch _stopwatch = Stopwatch();
   FlutterTts flutterTts = FlutterTts();
-  final random = Random();
+  final random = math.Random();
   final currentNumbers = <int>[];
   TextEditingController numbersController = TextEditingController();
 
@@ -53,7 +55,8 @@ class _NumbersGameScreenState extends ConsumerState<NumbersGameScreen> {
     _stopwatch.stop();
     final time = _stopwatch.elapsedMilliseconds;
     final typedNumbers = numbersController.text;
-    final userAnwser = typedNumbers.split(' ').map(int.parse).toList();
+    final userAnwser = typedNumbers.split('').map(int.parse).toList();
+    log('User anwser: $userAnwser');
     final correctAnwser = currentNumbers.reversed.toList();
     final roundStat = NumbersRoundStat(
       correctAnwser: correctAnwser,
