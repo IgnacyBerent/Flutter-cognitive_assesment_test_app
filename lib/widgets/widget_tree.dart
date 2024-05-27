@@ -6,6 +6,23 @@ import 'package:flutter/material.dart';
 
 import 'dart:async';
 
+/// `WidgetTree` is a StatefulWidget that manages the authentication state of the application.
+///
+/// It periodically checks if the JWT token is expired. If the token is expired, it attempts to refresh it.
+/// The state of the token (whether it's refreshed or not) is streamed via a `StreamController`.
+///
+/// The `build` method returns a `StreamBuilder` that listens to the `tokenController` stream.
+/// Depending on the state of the token, it either shows the `NavigatorLayoutTemplate` (if the token is valid)
+/// or the `LoginScreen` (if the token is not valid or couldn't be refreshed).
+///
+/// The `initState` method sets up a periodic timer that checks the token's state every 3 seconds.
+///
+/// The `dispose` method cancels the timer and closes the `tokenController` stream when the widget is disposed.
+///
+/// Fields:
+/// - `tokenController`: A `StreamController` that streams the state of the token (true if the token couldn't be refreshed, false otherwise).
+/// - `timer`: A `Timer` that periodically checks the state of the token.
+/// - `auth`: An `Authenticate` object used to refresh the token.
 class WidgetTree extends StatefulWidget {
   const WidgetTree({super.key});
 

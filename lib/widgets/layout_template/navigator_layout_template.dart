@@ -7,6 +7,22 @@ import 'package:cognitive_assesment_test_app/widgets/layout_template/layout_temp
 import 'package:cognitive_assesment_test_app/widgets/layout_template/layout_template_elements/layout_app_bar.dart';
 import 'package:flutter/material.dart';
 
+/// `NavigatorLayoutTemplate` is a StatefulWidget that manages the navigation of the application.
+///
+/// It maintains the currently selected page index and provides a method to change the selected page.
+/// The `build` method returns the active page based on the selected page index.
+///
+/// The `NavigatorLayoutTemplate` class has a private state class `_NavigatorLayoutTemplateState`.
+///
+/// Fields:
+/// - `_selectedPageIndex`: An integer that holds the index of the currently selected page. It defaults to 1.
+///
+/// Methods:
+/// - `selectPage(int index)`: A method that updates `_selectedPageIndex` with the provided index and rebuilds the widget.
+///
+/// The `_NavigatorLayoutTemplateState` class has the following methods:
+/// - `build(BuildContext context)`: A method that returns the active page based on `_selectedPageIndex`.
+///   It initializes `activePage` and `activePageTitle` with the home screen and its title. If `_selectedPageIndex` is 0, it updates `activePage` to the stats screen.
 class NavigatorLayoutTemplate extends StatefulWidget {
   const NavigatorLayoutTemplate({
     super.key,

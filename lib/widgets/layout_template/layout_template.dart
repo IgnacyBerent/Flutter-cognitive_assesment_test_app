@@ -4,6 +4,19 @@ import 'package:cognitive_assesment_test_app/widgets/layout_template/layout_temp
 import 'package:cognitive_assesment_test_app/widgets/layout_template/layout_template_elements/layout_app_bar.dart';
 import 'package:flutter/material.dart';
 
+/// `LayoutTemplate` is a StatelessWidget that provides a layout for the application.
+/// It takes in a screen name and a child widget.
+/// The `build` method returns a `Scaffold` widget that contains an `AppBar` and a `Stack` widget.
+/// The `Stack` widget contains an `AnimatedBackgroundContainer`, a `BlurCover`, and a `CenterView` widget.
+/// The `CenterView` widget contains the child widget.
+/// The `AppBar` widget displays the screen name.
+///
+/// Fields:
+/// - `screenName`: A string that holds the name of the screen.
+/// - `child`: A widget that holds the child widget.
+///
+/// Methods:
+/// - `build(BuildContext context)`: A method that returns a `Scaffold` widget. The `Scaffold` widget contains an `AppBar` and a `Stack` widget.
 class LayoutTemplate extends StatelessWidget {
   const LayoutTemplate({
     super.key,
