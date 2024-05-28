@@ -1,3 +1,5 @@
+[![wakatime](https://wakatime.com/badge/github/IgnacyBerent/flutter-cognitive_assesment_test_app.svg)](https://wakatime.com/badge/github/IgnacyBerent/flutter-cognitive_assesment_test_app)
+
 # Cognitive Assestment App
 
 A simple mobile application to test cognitive abilities. The app is connected to the backend via Fast Api and the data is stored in a MongoDB database.
